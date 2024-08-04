@@ -1,4 +1,4 @@
-package com.task.noteapp
+package com.rcunal.supernotes
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.createGraph
 import com.noteapp.core.ui.navigation.NavigationNode
 import com.noteapp.home.ui.navigation.HomeNavigationNode
-import com.task.noteapp.databinding.ActivityMainBinding
+import com.rcunal.supernotes.databinding.ActivityMainBinding
 import dagger.Lazy
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

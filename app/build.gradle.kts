@@ -8,15 +8,15 @@ plugins {
 
 android {
     compileSdk = 34
-    namespace = "com.task.noteapp"
+    namespace = "com.rcunal.supernotes"
 
     defaultConfig {
-        applicationId = "com.task.noteapp"
+        applicationId = "com.rcunal.supernotes"
         minSdk = 21
-        targetSdk = 33
-        versionCode = 1
+        targetSdk = 34
+        versionCode = 5
         versionName = "1.0"
-        testInstrumentationRunner = "com.task.noteapp.NoteAppTestRunner"
+        testInstrumentationRunner = "com.rcunal.supernotes.NoteAppTestRunner"
     }
 
     buildTypes {
@@ -25,13 +25,12 @@ android {
             applicationIdSuffix = ".debug"
         }
         release {
-            isDebuggable = true
-            isMinifyEnabled = false
+            isDebuggable = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {

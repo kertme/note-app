@@ -65,6 +65,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.AsyncImage
 import com.noteapp.core.ui.extension.isScrollingUp
@@ -297,6 +298,7 @@ fun NoteItem(note: NoteUiModel, onClick: (note: NoteUiModel) -> Unit) {
                     )
                 }
             }
+            PagingData
 
             Column(
                 modifier = Modifier.padding(top = 10.dp, end = 10.dp),

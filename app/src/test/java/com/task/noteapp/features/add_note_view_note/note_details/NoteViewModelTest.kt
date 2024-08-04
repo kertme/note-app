@@ -1,4 +1,4 @@
-package com.task.noteapp.features.add_note_view_note.note_details
+package com.rcunal.supernotes.features.add_note_view_note.note_details
 
 import org.junit.Assert.*
 

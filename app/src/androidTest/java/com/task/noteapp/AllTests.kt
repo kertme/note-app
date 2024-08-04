@@ -1,6 +1,6 @@
-package com.task.noteapp
+package com.rcunal.supernotes
 
-import com.task.noteapp.features.add_note_view_note.common.db.NoteDatabaseTest
+import com.rcunal.supernotes.features.add_note_view_note.common.db.NoteDatabaseTest
 import org.junit.runner.RunWith
 import org.junit.runners.Suite
 

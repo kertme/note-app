@@ -1,4 +1,4 @@
-package com.task.noteapp.matcher
+package com.rcunal.supernotes.matcher
 
 import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
