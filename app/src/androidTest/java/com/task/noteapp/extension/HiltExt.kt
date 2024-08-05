@@ -1,4 +1,4 @@
-package com.task.noteapp.extension
+package com.rcunal.supernotes.extension
 
 import android.content.ComponentName
 import android.content.Intent
@@ -7,8 +7,8 @@ import androidx.annotation.StyleRes
 import androidx.fragment.app.Fragment
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
-import com.task.noteapp.MainActivity
-import com.task.noteapp.R
+import com.rcunal.supernotes.MainActivity
+import com.rcunal.supernotes.R
 import dagger.hilt.internal.Preconditions
 
 /**

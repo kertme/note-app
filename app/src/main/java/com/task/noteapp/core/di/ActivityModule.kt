@@ -1,10 +1,10 @@
-package com.task.noteapp.core.di
+package com.rcunal.supernotes.core.di
 
 import android.content.Context
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.task.noteapp.R
+import com.rcunal.supernotes.R
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

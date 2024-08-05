@@ -12,13 +12,13 @@ import androidx.room.*
 interface NoteDao {
 
     @Upsert
-    suspend fun upsertNote(noteEntity: NoteEntity)
+    fun upsertNote(noteEntity: NoteEntity)
 
     @Query("DELETE FROM noteentity")
-    suspend fun clearNotes()
+    fun clearNotes()
 
     @Delete
-    suspend fun deleteNote(model: NoteEntity)
+    fun deleteNote(model: NoteEntity)
 
     @Query(
         """

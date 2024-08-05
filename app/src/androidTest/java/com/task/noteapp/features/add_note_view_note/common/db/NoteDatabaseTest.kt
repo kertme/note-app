@@ -1,4 +1,4 @@
-package com.task.noteapp.features.add_note_view_note.common.db
+package com.rcunal.supernotes.features.add_note_view_note.common.db
 
 import android.content.Context
 import androidx.paging.PagingSource

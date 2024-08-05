@@ -1,4 +1,4 @@
-package com.task.noteapp.extension
+package com.rcunal.supernotes.extension
 
 import android.view.View
 import androidx.test.espresso.ViewInteraction

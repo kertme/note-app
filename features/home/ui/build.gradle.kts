@@ -1,44 +1,13 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("noteapp.android.library")
+    id("noteapp.android.library.compose")
+    id("com.google.devtools.ksp")
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin")
 }
 
 android {
     namespace = "com.noteapp.home.ui"
-    compileSdk = 33
-
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 33
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -50,9 +19,11 @@ dependencies {
 
     implementation(project(":features:note_details:shared"))
 
-    implementation("com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1")
-    implementation("androidx.paging:paging-runtime-ktx:${Dependencies.pagingVersion}")
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.compose.paging)
 
-    kapt("com.google.dagger:hilt-android-compiler:${Dependencies.hiltVersion}")
-    implementation("com.google.dagger:hilt-android:${Dependencies.hiltVersion}")
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
+
+    implementation(libs.androidx.hilt.navigation.compose)
 }

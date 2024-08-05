@@ -1,29 +1,22 @@
 plugins {
-    id("com.android.application")
+    id("noteapp.android.application.compose")
     kotlin("android")
-    id("kotlin-kapt")
     id("kotlin-parcelize")
     id("dagger.hilt.android.plugin")
+    id("com.google.devtools.ksp")
 }
 
 android {
-    compileSdk = 33
-    namespace = "com.task.noteapp"
+    compileSdk = 34
+    namespace = "com.rcunal.supernotes"
 
     defaultConfig {
-        applicationId = "com.task.noteapp"
+        applicationId = "com.rcunal.supernotes"
         minSdk = 21
-        targetSdk = 33
-        versionCode = 1
+        targetSdk = 34
+        versionCode = 5
         versionName = "1.0"
-//        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner = "com.task.noteapp.NoteAppTestRunner"
-    }
-
-    kapt {
-        arguments {
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
+        testInstrumentationRunner = "com.rcunal.supernotes.NoteAppTestRunner"
     }
 
     buildTypes {
@@ -32,13 +25,12 @@ android {
             applicationIdSuffix = ".debug"
         }
         release {
-            isDebuggable = true
-            isMinifyEnabled = false
+            isDebuggable = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -52,6 +44,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -69,46 +62,44 @@ dependencies {
     implementation(project(":features:note_details:ui"))
     implementation(project(":features:note_details:shared"))
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${Dependencies.kotlinVersion}")
-    implementation("com.google.android.material:material:1.9.0")
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.material)
+    testImplementation(libs.junit4)
+    testImplementation(libs.kotlinx.coroutines.test)
 
-    androidTestImplementation("androidx.test.espresso:espresso-core:${Dependencies.espressoVersion}")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:${Dependencies.espressoVersion}")
-    debugImplementation("androidx.fragment:fragment-testing:${Dependencies.fragmentVersion}")
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test:rules:1.5.0")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation(libs.androidx.test.espresso.core)
+    androidTestImplementation(libs.androidx.espresso.contrib)
+    debugImplementation(libs.androidx.fragment.testing)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestImplementation(libs.androidx.junit)
 
-    androidTestImplementation("com.google.dagger:hilt-android-testing:${Dependencies.hiltVersion}")
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:${Dependencies.hiltVersion}")
+    androidTestImplementation(libs.hilt.android.testing)
+    kspAndroidTest(libs.hilt.android.compiler)
 
-    implementation("com.google.dagger:hilt-android:${Dependencies.hiltVersion}")
-    kapt("com.google.dagger:hilt-android-compiler:${Dependencies.hiltVersion}")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
 
     // Room
-    implementation("androidx.room:room-runtime:${Dependencies.roomVersion}")
-    implementation("androidx.room:room-ktx:${Dependencies.roomVersion}")
-    implementation("androidx.room:room-paging:${Dependencies.roomVersion}")
-    kapt("androidx.room:room-compiler:${Dependencies.roomVersion}")
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.androidx.room.paging)
+    ksp(libs.room.compiler)
 
     // Paging
-    implementation("androidx.paging:paging-runtime-ktx:${Dependencies.pagingVersion}")
+    implementation(libs.androidx.paging.runtime.ktx)
 
     // Navigation Component
-    implementation("androidx.navigation:navigation-fragment-ktx:${Dependencies.navigationVersion}")
-    implementation("androidx.navigation:navigation-ui-ktx:${Dependencies.navigationVersion}")
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
     // KTX
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:${Dependencies.ktxVersion}")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:${Dependencies.ktxVersion}")
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
 
     // Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    implementation(libs.kotlinx.coroutines.android)
 
     //swipe layout
-    implementation("com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1")
-
-    implementation("com.github.bumptech.glide:glide:4.15.1") // TODO: will be removed after moving fragments
+    implementation(libs.swipe.reveal.layout)
 }

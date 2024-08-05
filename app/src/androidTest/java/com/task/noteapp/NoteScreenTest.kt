@@ -1,4 +1,4 @@
-package com.task.noteapp
+package com.rcunal.supernotes
 
 import androidx.core.os.bundleOf
 import androidx.test.espresso.Espresso.onView
@@ -9,12 +9,12 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.noteapp.note_details.shared.NoteDetailsCommunicator
-import com.task.noteapp.extension.launchFragmentInHiltContainer
-import com.task.noteapp.extension.waitUntilReady
+import com.rcunal.supernotes.extension.launchFragmentInHiltContainer
+import com.rcunal.supernotes.extension.waitUntilReady
 import com.noteapp.note_details.shared.model.NoteDetailsType
 import com.noteapp.note_details.ui.model.NoteDetailsParcelableArguments
-import com.task.noteapp.matcher.DrawableMatcher
-import com.task.noteapp.matcher.ToastMatcher
+import com.rcunal.supernotes.matcher.DrawableMatcher
+import com.rcunal.supernotes.matcher.ToastMatcher
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.CoreMatchers.allOf

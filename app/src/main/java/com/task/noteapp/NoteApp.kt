@@ -1,4 +1,4 @@
-package com.task.noteapp
+package com.rcunal.supernotes
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

@@ -1,13 +1,7 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm")
-    `java-library`
-}
-
-java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    id("noteapp.jvm.library")
 }
 
 dependencies {
-    api("androidx.paging:paging-common:${Dependencies.pagingVersion}")
+    api(libs.androidx.paging.common)
 }

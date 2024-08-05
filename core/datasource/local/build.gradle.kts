@@ -1,47 +1,24 @@
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("noteapp.android.library")
+    id("com.google.devtools.ksp")
 }
 
 android {
     namespace = "com.noteapp.datasource.local"
-    compileSdk = 33
 
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 33
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas")
     }
 }
 
 dependencies {
     // Room
-    api("androidx.room:room-runtime:${Dependencies.roomVersion}")
-    api("androidx.room:room-ktx:${Dependencies.roomVersion}")
-    api("androidx.room:room-paging:${Dependencies.roomVersion}")
-    kapt("androidx.room:room-compiler:${Dependencies.roomVersion}")
+    api(libs.room.runtime)
+    api(libs.room.ktx)
+    api(libs.room.paging)
+    ksp(libs.room.compiler)
 
     // Hilt
-    implementation("com.google.dagger:hilt-core:${Dependencies.hiltVersion}")
-    kapt("com.google.dagger:hilt-compiler:${Dependencies.hiltVersion}")
+    implementation(libs.hilt.core)
+    ksp(libs.hilt.compiler)
 }

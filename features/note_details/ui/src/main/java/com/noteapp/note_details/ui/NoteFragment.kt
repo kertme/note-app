@@ -1,11 +1,13 @@
 package com.noteapp.note_details.ui
 
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.noteapp.core.domain.toStringWithFormat
-import com.noteapp.core.ui.BaseFragment
 import com.noteapp.core.ui.extension.collectFlow
 import com.noteapp.core.ui.extension.disable
 import com.noteapp.core.ui.extension.enable
@@ -15,6 +17,7 @@ import com.noteapp.core.ui.extension.showSoftKeyboard
 import com.noteapp.core.ui.extension.showToast
 import com.noteapp.core.ui.extension.themeColor
 import com.noteapp.core.ui.extension.show
+import com.noteapp.core.ui.viewBinding
 import com.noteapp.home.ui.R
 import com.noteapp.home.ui.databinding.DialogAddPhotoBinding
 import com.noteapp.home.ui.databinding.DialogNoteInfoLayoutBinding
@@ -27,8 +30,9 @@ import com.noteapp.core.ui.R as CoreR
 
 
 @AndroidEntryPoint
-class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::inflate) {
+class NoteFragment : Fragment(R.layout.fragment_note) {
 
+    private val binding by viewBinding(FragmentNoteBinding::bind)
     private val viewModel by viewModels<NoteViewModel>()
 
     private val args by lazy {
@@ -36,7 +40,11 @@ class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::infl
             ?: throw IllegalStateException()
     }
 
-    override fun onCreateFinished() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initListeners()
+
         if (args.noteDetailsType == NoteDetailsType.ADD) {
             binding.etTitle.showSoftKeyboard()
         }
@@ -146,7 +154,7 @@ class NoteFragment : BaseFragment<FragmentNoteBinding>(FragmentNoteBinding::infl
         dialog.show()
     }
 
-    override fun initListeners() {
+    private fun initListeners() {
         with(binding) {
             ivAddPhoto.setOnClickListener {
                 when (viewModel.state.value.currentState) {
